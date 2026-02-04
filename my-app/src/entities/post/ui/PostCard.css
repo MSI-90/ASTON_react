@@ -1,0 +1,24 @@
+.post__card {
+    border: 1px solid red;
+    display: flex;
+    gap: 10px;
+    font-size: clamp(0.875rem, 0.5rem + 1vw, 1.25rem);
+    margin-bottom: 10px;
+    justify-content: center;
+}
+
+.post__card p {
+    font-weight: bold;
+}
+
+.post__card p:nth-child(1) {
+    color: maroon;
+}
+
+.post__card p:nth-child(2) {
+    color: chocolate;
+}
+
+.post__card p:nth-child(3) {
+    color: darkgoldenrod;
+}
