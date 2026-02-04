@@ -2,6 +2,7 @@ import Button from '../../shared/components/Button';
 import AboutModal from "../../features/about-project/ui/AboutModal";
 import {useState} from 'react'
 import './Header.css';
+import ThemeSwitcher from "../../features/ThemeSwitcher/ui/switcher.tsx";
 
 interface IDialogInfo {
     dialogTitle: string;
@@ -19,6 +20,7 @@ export default function Header(){
         <>
             <header className="header-container">
                 <h2 className="header-title">Header страницы</h2>
+                <ThemeSwitcher />
                 <Button
                     baseButton={true}
                     onClick={() =>
