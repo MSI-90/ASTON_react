@@ -1,19 +1,21 @@
-import Button from '../../shared/components/Button';
-import AboutModal from "../../features/about-project/ui/AboutModal";
-import {useState} from 'react'
+import Button from '../../shared/ui/Buttons/Button.tsx';
 import './Header.css';
 import ThemeSwitcher from "../../features/ThemeSwitcher/ui/switcher.tsx";
+import Modal from '../../shared/ui/Modal/Modal.tsx';
+import {createPortal} from 'react-dom';
+import {useState} from "react";
 
-interface IDialogInfo {
-    dialogTitle: string;
-    dialogBody: string;
+interface IAboutModalInfo {
+    title: string;
+    body: string;
 }
 
 export default function Header(){
-    const [dialog, setDialog] = useState(false);
-    const dialogInfo: IDialogInfo = {
-        dialogTitle: 'О проекте',
-        dialogBody: 'Демонстрация диалога'
+    const [showModal, setShowModal] = useState(false);
+
+    const aboutModalInfo: IAboutModalInfo = {
+        title: 'О приложении',
+        body: 'Тело модального окна',
     }
 
     return (
@@ -23,24 +25,20 @@ export default function Header(){
                 <ThemeSwitcher />
                 <Button
                     baseButton={true}
-                    onClick={() =>
-                        setDialog(true)
-                    }
+                    onClick={() => setShowModal(true)}
                 >
                     О проекте
                 </Button>
 
-                {dialog && (
-                    <AboutModal
-                        header={dialogInfo.dialogTitle}
-                        modal={true}
-                        onAction={(type) => {
-                            if(type === 'dismiss') setDialog(false)
-                        }}
-                    >
-                        {dialogInfo.dialogBody}
-                    </AboutModal>
-                )}
+                {showModal && createPortal(
+                    <Modal
+                        {...aboutModalInfo}
+                        onClick={()=>
+                            setShowModal(false)
+                    }
+                    />,
+                    document.body)
+                }
             </header>
         </>
     )

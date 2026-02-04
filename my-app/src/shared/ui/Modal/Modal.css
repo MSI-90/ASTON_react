@@ -1,0 +1,86 @@
+/* затемнение фона */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    animation: fadeIn 0.25s ease;
+}
+
+/* окно */
+.modal-window {
+    background: #fff;
+    width: 420px;
+    max-width: 90%;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+    animation: scaleIn 0.25s ease;
+}
+
+/* заголовок */
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.modal-header h3 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+/* крестик */
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 26px;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+    color: #444;
+    transition: 0.2s;
+}
+
+.modal-close:hover {
+    color: #000;
+}
+
+/* тело */
+.modal-body {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* футер */
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* анимации */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0.92);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
