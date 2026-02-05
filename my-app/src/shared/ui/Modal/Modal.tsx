@@ -1,54 +1,37 @@
-import Button from '../Buttons/Button';
 import './Modal.css';
+import {ModalHeader} from './Modal.Header.tsx';
+import {ModalBody} from './Modal.Body.tsx';
+import {ModalFooter} from "./Modal.Footer.tsx";
 
 interface IModalProps {
   title?: string;
   body?: string;
   onClick?: () => void;
-  children?: React.ReactNode[];
+  children?: React.ReactNode;
 }
 
-export default function Modal (props: IModalProps) {
+function ModalBase (props: IModalProps){
   return (
     <>
       <div className="modal-overlay" onClick={props?.onClick}>
         <div className="modal-window" onClick={(e) => e.stopPropagation()}>
-          {props?.children}
+          {props.children}
         </div>
       </div>
     </>
   )
 }
 
-Modal.Header = function ModalHeader (props: IModalProps) {
-  return (
-    <>
-      <div className="modal-header">
-        <h3>{props?.title}</h3>
-        <button className="modal-close" onClick={props?.onClick}>×</button>
-      </div>
-    </>
-  )
+type ModalComponent = typeof ModalBase & {
+  Header: typeof ModalHeader
+  Body: typeof ModalBody
+  Footer: typeof ModalFooter
 }
 
-Modal.Body = function ModalBody (props: IModalProps) {
-  return (
-    <>
-      <div className="modal-body">
-        {props?.body}
-      </div>
-    </>
-  )
-}
+const Modal = ModalBase as ModalComponent
 
-Modal.Footer = function ModalFooter (props: IModalProps) {
-  return (
-    <>
-      <div className="modal-footer">
-        <Button baseButton={true} onClick={props?.onClick}>
-          Закрыть
-        </Button>
-      </div>
-    </>
-  )
-}
+Modal.Header = ModalHeader
+Modal.Body = ModalBody
+Modal.Footer = ModalFooter
+
+export default Modal
