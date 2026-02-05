@@ -4,8 +4,6 @@ import {ModalBody} from './Modal.Body.tsx';
 import {ModalFooter} from "./Modal.Footer.tsx";
 
 interface IModalProps {
-  title?: string;
-  body?: string;
   onClick?: () => void;
   children?: React.ReactNode;
 }
