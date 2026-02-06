@@ -2,7 +2,7 @@
     border: 1px solid red;
     display: flex;
     gap: 10px;
-    font-size: clamp(0.875rem, 0.5rem + 1vw, 1.25rem);
+    font-size: clamp(0.875rem, 0.5rem + 1vw, 0.87rem);
     margin-bottom: 10px;
     justify-content: center;
 }
