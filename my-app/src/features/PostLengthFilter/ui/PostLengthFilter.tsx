@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useState, useId} from "react";
 import type {IPostList} from "../../../widgets/PostList/testData/Post.ts";
 import {filterByLength} from "../lib/filterByLength.ts";
 import './PostLengthFilter.css';
@@ -13,15 +13,15 @@ interface IPostLengthFilter {
 export default function PostLengthFilter({labelPreview, minValue, originalPosts, onPostChange}: IPostLengthFilter) {
   const [value, setValue] = useState(minValue);
   const [valueError, setValueError] = useState('');
-
+  const id = useId();
 
   return (
     <>
       <div className={'post-filter'}>
-        <label htmlFor={'post-filter'}>{labelPreview}</label>
+        <label htmlFor={id}>{labelPreview}</label>
         <input
           type='number'
-          name={'post-filter'}
+          id={id}
           placeholder='post Length'
           value={value}
           onChange={(event) => {
