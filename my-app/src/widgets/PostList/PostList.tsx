@@ -1,15 +1,20 @@
 import PostCard from "../../entities/post/ui/PostCard.tsx";
 import {posts, type IPostList} from './models/Post.ts';
 import PostLengthFilter from "../../features/PostLengthFilter/ui/PostLengthFilter.tsx";
-import {useState} from "react";
+import {useCallback, useMemo, useState} from "react";
 
 export default function PostList() {
-  const minValue = posts[0].title.length;
+  const firstPostlength = posts[0].title.length;
+  
+  const minValue = useMemo(() => {
+    return firstPostlength;
+  }, [firstPostlength]);
+  
   const [postList, setPostList] = useState(posts);
 
-  const newPosts = (updatedPosts: IPostList[]) => {
+  const newPosts = useCallback((updatedPosts: IPostList[]) => {
     setPostList(updatedPosts);
-  }
+  }, [])
 
   return (
     <>

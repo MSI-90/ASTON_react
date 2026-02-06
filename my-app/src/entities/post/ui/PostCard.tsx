@@ -8,7 +8,7 @@ interface IPostCard {
     }
 }
 
-export default function PostCard({post}: IPostCard){
+const PostCard = function PostCard({post}: IPostCard){
     return (
         <>
             <div className={'post__card'}>
@@ -19,3 +19,5 @@ export default function PostCard({post}: IPostCard){
         </>
     )
 }
+
+export default PostCard;
