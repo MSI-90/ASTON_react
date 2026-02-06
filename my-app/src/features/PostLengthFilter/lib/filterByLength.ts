@@ -1,4 +1,4 @@
-import {type IPostList} from '../../../widgets/PostList/models/Post.ts';
+import {type IPostList} from '../../../widgets/PostList/testData/Post.ts';
 
 type filterReturn = IPostList[] | [];
 

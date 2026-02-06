@@ -1,5 +1,5 @@
 import {useState} from "react";
-import type {IPostList} from "../../../widgets/PostList/models/Post.ts";
+import type {IPostList} from "../../../widgets/PostList/testData/Post.ts";
 import {filterByLength} from "../lib/filterByLength.ts";
 import './PostLengthFilter.css';
 
