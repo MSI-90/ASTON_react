@@ -1,13 +1,13 @@
 import {useState, useId} from "react";
-import type {IPostList} from "../../../widgets/PostList/testData/Post.ts";
+import type {IPost} from "../../../widgets/PostList/testData/Post.ts";
 import {filterByLength} from "../lib/filterByLength.ts";
 import './PostLengthFilter.css';
 
 interface IPostLengthFilter {
   labelPreview: string;
   minValue: number;
-  originalPosts: IPostList[];
-  onPostChange: (post: IPostList[]) => void;
+  originalPosts: IPost[];
+  onPostChange: (post: IPost[]) => void;
 }
 
 export default function PostLengthFilter({labelPreview, minValue, originalPosts, onPostChange}: IPostLengthFilter) {

@@ -1,8 +1,8 @@
-import {type IPostList} from '../../../widgets/PostList/testData/Post.ts';
+import {type IPost} from '../../../widgets/PostList/testData/Post.ts';
 
-type filterReturn = IPostList[] | [];
+type filterReturn = IPost[] | [];
 
-export function filterByLength(posts: IPostList[], numberOfFilter: number): filterReturn {
+export function filterByLength(posts: IPost[], numberOfFilter: number): filterReturn {
   if (!Array.isArray(posts)) return [];
   return posts.filter((post) => post.title.length >= numberOfFilter);
 }

@@ -1,10 +1,10 @@
-export interface IPostList {
+export interface IPost {
   id: number;
   title: string;
   body: string;
 }
 
-export const posts: IPostList[] = [
+export const posts: IPost[] = [
   { id: 1, title: 'Первый пост', body: 'Текст поста' },
   { id: 2, title: 'Второй пост', body: 'Текст второго поста' },
   { id: 3, title: 'Третий пост', body: 'Текст третьего поста' },
