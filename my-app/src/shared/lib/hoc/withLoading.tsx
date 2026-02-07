@@ -6,12 +6,12 @@ export default function WithLoading(Component: React.FC) {
   const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-      setTimeout(() => {
+      const timerId = setTimeout(() => {
         setLoading(false)
       }, 3000)
 
       return () => {
-        clearTimeout();
+        clearTimeout(timerId);
       }
     },[])
 

@@ -1,13 +1,21 @@
 .post-filter {
+    align-items: flex-start;
+    color: #009933;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     flex-wrap: wrap;
-    color: #009933;
+    margin-bottom: 10px;
 }
 
 .post-filter input {
-    width: 20vw;
+    border-radius: 3px;
+    color: darkred;
+    font-family: 'Gigi, Geneva', sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    height: 30px;
+    width: 15vh;
+    padding-left: 10px;
 }
 
 .post-filter span {
