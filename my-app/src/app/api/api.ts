@@ -7,7 +7,8 @@ export function getPostById({params}:LoaderFunctionArgs): IPost | null {
   if (typeof postId === 'undefined') return null;
 
   const requestedPost: IPost | undefined = posts.find((post: IPost) => post.id === parseInt(postId));
-  if (!requestedPost) return null;
+  if (!requestedPost)
+    throw new Error(`пост с идентификатором ${postId} не был найден`);
 
   return requestedPost;
 }
