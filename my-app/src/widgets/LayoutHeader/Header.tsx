@@ -1,6 +1,6 @@
 import Button from '../../shared/ui/Buttons/Button.tsx';
 import './Header.css';
-import ThemeSwitcher from "../../features/ThemeSwitcher/ui/switcher.tsx";
+import ThemeSwitcher from "../../features/ThemeSwitcher/ui/ThemeSwitcher.tsx";
 import Modal from '../../shared/ui/Modal/Modal.tsx';
 import {createPortal} from 'react-dom';
 import {useState} from "react";
@@ -12,7 +12,6 @@ interface IAboutModalInfo {
 
 export default function Header(){
     const [showModal, setShowModal] = useState(false);
-
     const aboutModalInfo: IAboutModalInfo = {
         title: 'О приложении',
         body: 'Тело модального окна',

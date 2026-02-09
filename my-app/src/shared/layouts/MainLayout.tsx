@@ -1,18 +1,17 @@
 import Header from '../../widgets/LayoutHeader/Header.tsx'
 import Footer from '../../widgets/LayoutFooter/Footer.tsx'
-import {type PropsWithChildren, useContext} from "react";
-import {ThemeContext} from "../lib/theme/context.ts";
+import {type PropsWithChildren} from "react";
 import './MainLayout.css';
+import ThemeProvider from "../lib/theme/ThemeProvider.tsx";
 
 export default function MainLayout({children}: PropsWithChildren) {
-    const theme = useContext(ThemeContext);
     return (
         <>
-            <div className={theme?.theme}>
+            <ThemeProvider>
                 <Header />
                 {children}
                 <Footer />
-            </div>
+            </ThemeProvider>
         </>
     )
 }

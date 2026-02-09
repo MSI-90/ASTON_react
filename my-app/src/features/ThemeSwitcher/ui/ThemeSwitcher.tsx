@@ -1,5 +1,5 @@
 import {useContext} from 'react';
-import {ThemeContext} from '../../../shared/lib/theme/context.ts';
+import {ThemeContext} from '../../../shared/lib/theme/ThemeContext.ts';
 import Button from '../../../shared/ui/Buttons/Button.tsx';
 
 export default function ThemeSwitcher() {
@@ -7,7 +7,7 @@ export default function ThemeSwitcher() {
     if (!themeContext) return null;
 
     const {theme, toggleTheme} = themeContext;
-    const themeLabel: 'DARK' | 'LIGHT' = theme === 'light' ?'DARK' : 'LIGHT';
+    const themeLabel: 'DARK' | 'LIGHT' = theme === 'light' ? 'DARK' : 'LIGHT';
 
     return (
         <Button
