@@ -1,5 +1,12 @@
 .dark {
     background-color: #000;
+    .header-container {
+        color: white;
+    }
+
+    .footer-container {
+        color: white;
+    }
 }
 
 .light {
