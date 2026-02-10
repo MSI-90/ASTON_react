@@ -3,7 +3,7 @@ import {useState} from "react";
 import '../app/App.css';
 
 import {RouterProvider} from "react-router-dom";
-import { router } from './providers/router/router.tsx';
+import { router } from './providers/router/Router.tsx';
 
 
 function App() {
