@@ -1,14 +1,14 @@
 import {useEffect, useState, useCallback} from 'react';
-import comments from '../tetsData/Comments.ts';
+import comments, {type IComment} from '../tetsData/Comments.ts';
 import CommentCard from "../../../entities/comment/ui/CommentCard.tsx";
 
-export default function CommentList() {
-  const [comment, setComment] = useState<Array>([]);
+export function CommentList() {
+  const [comment, setComment] = useState<IComment[]>([]);
   const [commentCount, setCommentCount] = useState<number>(0);
 
   const commentsList = useCallback(() => {
     if (!Array.isArray(comments) || comments.length === 0) return [];
-    return(comments);
+    return (comments);
   }, []);
 
   const getCommentCount = useCallback(() => {
@@ -28,17 +28,16 @@ export default function CommentList() {
   });
 
   return (
-    <>
-      <div>
-        <span>Всего комментариев: {commentCount} </span>
-        {comment && (
-          comment.map((item: IComment , index: number)  => (
-            <CommentCard props={item} key={index}/>
-          ))
-        )}
-
-      </div>
-    </>
+      <>
+        <div>
+          <span>Всего комментариев: {commentCount} </span>
+          {comment && (
+              comment.map((item: IComment, index: number) => (
+                  <CommentCard {...item} key={index}/>
+              ))
+          )}
+        </div>
+      </>
   )
 
 }

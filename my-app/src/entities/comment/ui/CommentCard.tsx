@@ -1,15 +1,11 @@
 import './CommentCard.css';
 import {useState} from "react";
+import type {IComment} from "../../../widgets/CommentList/tetsData/Comments.ts";
 
-interface ICommentCard {
-  postId: number;
-  id: number;
-  name: string;
-  email: string;
-  body: string;
+interface ICommentCard extends IComment {
 }
 
-export default function CommentCard({props}: ICommentCard) {
+export default function CommentCard(props: ICommentCard) {
   const [open, setOpen] = useState(false);
   const {
     postId,

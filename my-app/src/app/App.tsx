@@ -1,7 +1,6 @@
 import {ThemeContext, type Theme} from "../shared/lib/theme/context.ts";
 import {useState} from "react";
 import '../app/App.css';
-
 import {RouterProvider} from "react-router-dom";
 import { router } from './providers/router/Router.tsx';
 
