@@ -1,12 +1,7 @@
 import './AlbumItem.css';
+import type {IAlbumUser} from "../Album.ts";
 
-interface IAlbumItemParams {
-  userId: number;
-  id: number;
-  title: string;
-}
-
-export function AlbumItem(props: IAlbumItemParams) {
+export function AlbumItem(props: IAlbumUser) {
   const {userId, id, title} = props;
   return (
     <>

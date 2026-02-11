@@ -1,0 +1,36 @@
+import type {ITodosUser} from "../Todos.ts";
+import './TodoItem.css';
+
+export default function TodoItem(props: ITodosUser) {
+  const {userId, id, title, completed} = props;
+  return (
+    <>
+      <section className={'todo-item'}>
+        <article>
+          <span>
+            Идентификатор пользователя:
+          </span>
+          {userId}
+        </article>
+        <article>
+          <span>
+            Идентификатор ресурса:
+          </span>
+          {id}
+        </article>
+        <article>
+          <span>
+            Наименование ресурса:
+          </span>
+          {title}
+        </article>
+        <article>
+          <span>
+            Задача выполнена?
+          </span>
+          {completed ? 'Да' : 'Нет'}
+        </article>
+      </section>
+    </>
+  )
+}

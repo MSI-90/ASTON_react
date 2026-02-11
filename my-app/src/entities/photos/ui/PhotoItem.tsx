@@ -1,0 +1,33 @@
+import type {IPhoto} from "../Photos.ts";
+import './PhotoItem.css';
+
+export default function PhotoItem (props: IPhoto) {
+  const {albumId, id, title, url, thumbnailUrl} = props;
+
+  return (
+    <>
+      <section className={'photo-item'}>
+        <article>
+          <span>Идентификатор альбома: </span>
+          {albumId}
+        </article>
+        <article>
+          <span>Идентификатор изображения: </span>
+          {id}
+        </article>
+        <article>
+          <span>Наименование изображения: </span>
+          {title}
+        </article>
+        <article>
+          <span>Путь к изображению в сети интернет: </span>
+          {url}
+        </article>
+        <article>
+          <span>Миниатюра изображения: </span>
+          {thumbnailUrl}
+        </article>
+      </section>
+    </>
+  )
+}
