@@ -6,10 +6,10 @@ import WithLoading from '../../../shared/lib/hoc/withLoading.tsx';
 import PostPage from '../../../pages/Post/PostPage.tsx';
 import Error404 from "../../../pages/Error404/Error404.tsx";
 import AlbumPage from "../../../pages/Album/AlbumPage.tsx";
-import {getPostById} from "../../api/Api.ts";
+import {getPostById} from "../../api/Loaders.ts";
 
 const PostListWithLoader = WithLoading(PostList);
-const CommentListWithLoading = WithLoading(CommentList);
+const CommentListWithLoader = WithLoading(CommentList);
 
 export const router = createBrowserRouter([
   {
@@ -19,7 +19,7 @@ export const router = createBrowserRouter([
       {index: true, element: (
         <>
           <PostListWithLoader />
-          <CommentListWithLoading />
+          <CommentListWithLoader />
         </>
       )},
       { path: 'posts', element: <PostListWithLoader /> },

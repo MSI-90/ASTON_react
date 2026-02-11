@@ -3,7 +3,7 @@ import './Error404.css';
 
 export default function Error404() {
   const error = useRouteError();
-  const errorMessage: string = error instanceof Error ? 'Ресурс ' + error.message : 'Запрашиваемый вами ресурс не был найден';
+  const errorMessage: string = error instanceof Error ? error.message : 'Запрашиваемый вами ресурс не был найден';
 
   return (
     <main className="not-found">
