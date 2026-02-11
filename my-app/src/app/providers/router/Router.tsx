@@ -25,8 +25,8 @@ export const router = createBrowserRouter([
       )},
       { path: 'posts', element: <PostListWithLoader /> },
       { path: 'posts/:id', loader: getPostById, element: <PostPage />, errorElement: <Error404 /> },
-      { path: '/users/:id/:section', element: <UserPage />, errorElement: <Error404 /> },
-      { path: '/albums/:id/photos', element: <PhotoPage />, errorElement: <Error404/> }
+      { path: 'users/:id/:section', element: <UserPage />, errorElement: <Error404 /> },
+      { path: 'albums/:id/photos', element: <PhotoPage />, errorElement: <Error404/> }
     ]
   }
 ]);

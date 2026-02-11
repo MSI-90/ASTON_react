@@ -1,5 +1,6 @@
 import PostCard from "../../entities/post/ui/PostCard.tsx";
-import {posts, type IPost} from './testData/Post.ts';
+import {posts} from './testData/Post.ts';
+import type {IPost} from '../../entities/post/Post.ts';
 import PostLengthFilter from "../../features/PostLengthFilter/ui/PostLengthFilter.tsx";
 import {useCallback, useMemo, useState} from "react";
 
@@ -26,7 +27,7 @@ export default function PostList() {
           onPostChange={newPosts}
         />
         {postList.map(post => (
-          <PostCard key={post.id} post={post} />
+          <PostCard key={post.id} {...post} />
         ))}
       </div>
     </>

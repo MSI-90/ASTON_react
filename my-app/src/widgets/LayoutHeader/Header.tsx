@@ -4,6 +4,7 @@ import ThemeSwitcher from "../../features/ThemeSwitcher/ui/switcher.tsx";
 import Modal from '../../shared/ui/Modal/Modal.tsx';
 import {createPortal} from 'react-dom';
 import {useState} from "react";
+import UserTabs from "../UserTabs/UseTabs.tsx";
 
 interface IAboutModalInfo {
   title: string;
@@ -23,6 +24,7 @@ export default function Header(){
       <header className="header-container">
         <h2 className="header-title">Header страницы</h2>
         <ThemeSwitcher />
+        <UserTabs />
         <Button
           baseButton={true}
           onClick={() => setShowModal(true)}

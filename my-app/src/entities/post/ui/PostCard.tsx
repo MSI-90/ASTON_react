@@ -1,14 +1,12 @@
 import './PostCard.css';
 
 interface IPostCard {
-    post: {
-        id: number;
-        title: string;
-        body: string;
-    }
+    id: number;
+    title: string;
+    body: string;
 }
 
-const PostCard = function PostCard({post}: IPostCard){
+const PostCard = function PostCard(post: IPostCard){
     return (
         <>
             <div className={'post__card'}>

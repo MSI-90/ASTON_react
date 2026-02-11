@@ -21,11 +21,11 @@ export default function PhotoItem (props: IPhoto) {
         </article>
         <article>
           <span>Путь к изображению в сети интернет: </span>
-          {url}
+          <a href ={url}> Изображение </a>
         </article>
         <article>
           <span>Миниатюра изображения: </span>
-          {thumbnailUrl}
+          <a href={thumbnailUrl}> Миниатюра изображения </a>
         </article>
       </section>
     </>

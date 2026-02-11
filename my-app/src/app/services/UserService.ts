@@ -1,6 +1,7 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
 import type {IAlbumUser} from "../../entities/album/Album.ts";
 import type {ITodosUser} from "../../entities/todos/Todos.ts";
+import type {IPost} from "../../entities/post/Post.ts";
 
 interface Params {
     userId: number
@@ -23,8 +24,14 @@ export const userApi = createApi({
                 url: `users/${userId}/${section}`,
                 params: {_limit: limit}
             })
+        }),
+        getPostsByUserId: builder.query<IPost[], Params>({
+            query: ({userId, section, limit}: Params) => ({
+                url: `users/${userId}/${section}`,
+                params: {_limit: limit}
+            })
         })
     }),
 });
 
-export const { useGetAlbumsByUserIdQuery, useGetTodosByUserIdQuery } = userApi
+export const { useGetAlbumsByUserIdQuery, useGetTodosByUserIdQuery, useGetPostsByUserIdQuery } = userApi

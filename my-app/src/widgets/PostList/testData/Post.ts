@@ -1,8 +1,4 @@
-export interface IPost {
-  id: number;
-  title: string;
-  body: string;
-}
+import type {IPost} from "../../../entities/post/Post.ts";
 
 export const posts: IPost[] = [
   { id: 1, title: 'Первый пост', body: 'Текст поста' },
