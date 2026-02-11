@@ -1,5 +1,5 @@
 import {useLoaderData} from "react-router-dom";
-import type {IPost} from "../../widgets/PostList/testData/Post.ts";
+import type {IPost} from "../../entities/post/Post.ts";
 import './PostPage.css';
 
 export default function PostPage() {

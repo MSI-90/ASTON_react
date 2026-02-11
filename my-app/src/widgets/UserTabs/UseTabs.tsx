@@ -3,7 +3,7 @@ import './UserTabs.css';
 
 interface IPostParams {
   id: number;
-  section: string;
+  section?: string;
 }
 
 interface IAlbumParams {
@@ -32,6 +32,10 @@ export default function UserTabs() {
     section: 'todos'
   }
 
+  const customPost: IPostParams = {
+    id: 1
+  }
+
   return(
     <>
       <nav>
@@ -46,6 +50,9 @@ export default function UserTabs() {
         </span>
         <span>
           <NavLink to={`users/${todosParams.id}/${todosParams.section}`}>Все таски пользователя под ID: 1</NavLink>
+        </span>
+        <span>
+          <NavLink to={`customHook/${customPost.id}`}>Кастомный хук для постов пользователя под ID: 1</NavLink>
         </span>
       </nav>
     </>
