@@ -1,5 +1,5 @@
 import {useParams} from "react-router-dom";
-import {useGetAlbumsByUserIdQuery} from "../../app/services/UserService.ts";
+import {useGetAlbumsByUserIdQuery} from "../../entities/user/api/userApi.ts";
 import {AlbumItem} from "../../entities/album/ui/AlbumItem.tsx";
 import type {IAlbumUser} from "../../entities/album/Album.ts";
 import './AlbumPage.css';

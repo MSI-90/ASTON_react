@@ -1,5 +1,5 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
-import type {IPhoto} from "../../entities/photos/Photos.ts";
+import type {IPhoto} from "../../photos/Photos.ts";
 
 interface Params {
   albumId: number

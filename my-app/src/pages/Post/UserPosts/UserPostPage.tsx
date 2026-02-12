@@ -1,5 +1,5 @@
 import {useParams} from "react-router-dom";
-import {useGetPostsByUserIdQuery} from "../../../app/services/UserService.ts";
+import {useGetPostsByUserIdQuery} from "../../../entities/user/api/userApi.ts";
 import type {IPost} from "../../../entities/post/Post.ts";
 import PostCard from "../../../entities/post/ui/PostCard.tsx";
 

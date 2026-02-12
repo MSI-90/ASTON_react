@@ -1,5 +1,5 @@
 import {useParams} from "react-router-dom";
-import {useGetPhotosByAlbumIdQuery} from "../../app/services/AlbumService.ts";
+import {useGetPhotosByAlbumIdQuery} from "../../entities/album/api/albumsApi.ts";
 import type {IPhoto} from "../../entities/photos/Photos.ts";
 import PhotoItem from "../../entities/photos/ui/PhotoItem.tsx";
 import './PhotoPage.css';

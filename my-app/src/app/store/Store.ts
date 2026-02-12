@@ -2,8 +2,8 @@ import { combineReducers } from "redux";
 import {configureStore} from "@reduxjs/toolkit";
 
 // RTK Query
-import {userApi} from '../services/UserService.ts';
-import {albumApi} from "../services/AlbumService.ts";
+import {userApi} from '../../entities/user/api/userApi.ts';
+import {albumApi} from "../../entities/album/api/albumsApi.ts";
 
 // корневой редьюсер стора
 // можно использовать просто объект

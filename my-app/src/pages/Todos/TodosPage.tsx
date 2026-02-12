@@ -1,5 +1,5 @@
 import {useParams} from "react-router-dom";
-import {useGetTodosByUserIdQuery} from "../../app/services/UserService.ts";
+import {useGetTodosByUserIdQuery} from "../../entities/user/api/userApi.ts";
 import TodoItem from "../../entities/todos/ui/TodoItem.tsx";
 import type {ITodosUser} from "../../entities/todos/Todos.ts";
 

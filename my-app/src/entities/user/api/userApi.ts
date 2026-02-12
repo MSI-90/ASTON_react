@@ -1,7 +1,7 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
-import type {IAlbumUser} from "../../entities/album/Album.ts";
-import type {ITodosUser} from "../../entities/todos/Todos.ts";
-import type {IPost} from "../../entities/post/Post.ts";
+import type {IAlbumUser} from "../../album/Album.ts";
+import type {ITodosUser} from "../../todos/Todos.ts";
+import type {IPost} from "../../post/Post.ts";
 
 interface Params {
     userId: number
