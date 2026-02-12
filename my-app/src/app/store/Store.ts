@@ -4,12 +4,14 @@ import {configureStore} from "@reduxjs/toolkit";
 // RTK Query
 import {userApi} from '../../entities/user/api/userApi.ts';
 import {albumApi} from "../../entities/album/api/albumsApi.ts";
+import {postsApi} from "../../entities/post/api/postsApi.ts";
 
 // корневой редьюсер стора
 // можно использовать просто объект
 const rootReducer = combineReducers({
     [userApi.reducerPath]: userApi.reducer,
     [albumApi.reducerPath]: albumApi.reducer,
+    [postsApi.reducerPath]: postsApi.reducer,
 })
 
 // конфигурация стора
@@ -19,7 +21,10 @@ export const setupStore = () => {
     return configureStore({
         reducer: rootReducer,
         middleware: (getDefaultMiddleware) =>
-            getDefaultMiddleware().concat(userApi.middleware).concat(albumApi.middleware),
+            getDefaultMiddleware()
+              .concat(userApi.middleware)
+              .concat(albumApi.middleware)
+              .concat(postsApi.middleware),
     });
 }
 
