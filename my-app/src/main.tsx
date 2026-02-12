@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './app/App.tsx'
 import {Provider} from "react-redux";
-import {setupStore} from "./app/store/Store.ts";
+import {setupStore} from "./app/providers/store/Store.ts";
 
 const store = setupStore();
 
