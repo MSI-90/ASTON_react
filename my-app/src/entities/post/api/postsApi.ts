@@ -9,7 +9,7 @@ interface Params {
 export const postsApi = createApi({
   reducerPath: 'postApi',
   baseQuery: fetchBaseQuery({ baseUrl: 'https://jsonplaceholder.typicode.com/'}),
-  tagTypes: ['posts'],
+  tagTypes: ['posts', 'postById'],
   endpoints: (builder) => ({
     getAllPosts: builder.query<IPost[], Params>({
       query: ({limit}: Params) => ({
@@ -21,7 +21,8 @@ export const postsApi = createApi({
     getPostById: builder.query<IPost, Params>({
       query: ({id}: Params) => ({
         url: `posts/${id}`
-      })
+      }),
+      providesTags: ['postById'],
     })
   })
 })

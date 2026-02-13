@@ -28,7 +28,6 @@ export const PostSlice = createSlice({
           state.error = false;
         }
       );
-
     builder
       .addMatcher(
         postsApi.endpoints.getAllPosts.matchFulfilled,
@@ -38,9 +37,31 @@ export const PostSlice = createSlice({
           postAdapter.setAll(state, action.payload);
         }
       );
-
     builder
       .addMatcher(postsApi.endpoints.getAllPosts.matchRejected,
+        (state) => {
+          state.loading = false;
+          state.error = true;
+        }
+      );
+
+    builder
+      .addMatcher(postsApi.endpoints.getPostById.matchPending,
+        (state) => {
+          state.loading = true;
+          state.error = false;
+        }
+      );
+    builder
+      .addMatcher(postsApi.endpoints.getPostById.matchFulfilled,
+        (state, action) => {
+          state.loading = false;
+          state.error = false;
+          postAdapter.upsertOne(state, action.payload);
+        }
+      );
+    builder
+      .addMatcher(postsApi.endpoints.getPostById.matchRejected,
         (state) => {
           state.loading = false;
           state.error = true;
