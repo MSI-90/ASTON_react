@@ -1,7 +1,7 @@
-import './AlbumItem.css';
+import './AlbumCard.css';
 import type {IAlbumUser} from "../Album.ts";
 
-export function AlbumItem(props: IAlbumUser) {
+export function AlbumCard(props: IAlbumUser) {
   const {userId, id, title} = props;
   return (
     <>

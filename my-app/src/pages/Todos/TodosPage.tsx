@@ -1,6 +1,6 @@
 import {useParams} from "react-router-dom";
 import {useGetTodosByUserIdQuery} from "../../entities/user/api/userApi.ts";
-import TodoItem from "../../entities/todos/ui/TodoItem.tsx";
+import TodoCard from "../../entities/todos/ui/TodoCard.tsx";
 import type {ITodosUser} from "../../entities/todos/Todos.ts";
 
 export default function Todos() {
@@ -20,7 +20,7 @@ export default function Todos() {
         {error && <p>Is error here!!!</p>}
         {data &&
           data.map((item: ITodosUser) => (
-            <TodoItem {...item} key={crypto.randomUUID()} />
+            <TodoCard {...item} key={crypto.randomUUID()} />
           ))
         }
       </div>

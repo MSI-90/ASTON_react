@@ -23,14 +23,16 @@ export default function Header(){
     <>
       <header className="header-container">
         <h2 className="header-title">Header страницы</h2>
-        <ThemeSwitcher />
-        <UserTabs />
-        <Button
-          baseButton={true}
-          onClick={() => setShowModal(true)}
-        >
-          О проекте
-        </Button>
+        <div className="header-buttons">
+          <ThemeSwitcher />
+          <Button
+            baseButton={true}
+            onClick={() => setShowModal(true)}
+          >
+            О проекте
+          </Button>
+          <UserTabs />
+        </div>
 
         {showModal && createPortal(
           <Modal onClick={()=> setShowModal(false)}>

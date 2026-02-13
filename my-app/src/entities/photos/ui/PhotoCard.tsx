@@ -1,7 +1,7 @@
 import type {IPhoto} from "../Photos.ts";
-import './PhotoItem.css';
+import './PhotoCard.css';
 
-export default function PhotoItem (props: IPhoto) {
+export default function PhotoCard (props: IPhoto) {
   const {albumId, id, title, url, thumbnailUrl} = props;
 
   return (

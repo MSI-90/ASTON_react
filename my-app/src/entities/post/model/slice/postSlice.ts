@@ -1,0 +1,52 @@
+import type {IPost} from "../../Post.ts";
+import {createEntityAdapter, createSlice} from "@reduxjs/toolkit";
+import {postsApi} from "../../api/postsApi.ts";
+import type {RootState} from "../../../../app/providers/store/Store.ts";
+
+const postAdapter = createEntityAdapter<IPost>();
+
+export const postSelectors = postAdapter.getSelectors(
+  (state: RootState) => state.post
+);
+
+// первичное состояние, инициализация
+const initialState = postAdapter.getInitialState({
+  loading: false,
+  error: false,
+});
+
+export const PostSlice = createSlice({
+  name: 'post',
+  initialState: initialState,
+  reducers: {},
+  extraReducers: builder => {
+    builder
+      .addMatcher(
+        postsApi.endpoints.getAllPosts.matchPending,
+        (state) => {
+          state.loading = true;
+          state.error = false;
+        }
+      );
+
+    builder
+      .addMatcher(
+        postsApi.endpoints.getAllPosts.matchFulfilled,
+        (state, action) => {
+          state.loading = false;
+          state.error = false;
+          postAdapter.setAll(state, action.payload);
+        }
+      );
+
+    builder
+      .addMatcher(postsApi.endpoints.getAllPosts.matchRejected,
+        (state) => {
+          state.loading = false;
+          state.error = true;
+        }
+      );
+  }
+})
+
+export default PostSlice.reducer;

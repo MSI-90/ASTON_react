@@ -1,16 +1,13 @@
 import {useState, useId} from "react";
-import type {IPost} from "../../../widgets/PostList/testData/Post.ts";
-import {filterByLength} from "../lib/filterByLength.ts";
 import './PostLengthFilter.css';
 
 interface IPostLengthFilter {
   labelPreview: string;
   minValue: number;
-  originalPosts: IPost[];
-  onPostChange: (post: IPost[]) => void;
+  onChange: (value: number) => void;
 }
 
-export default function PostLengthFilter({labelPreview, minValue, originalPosts, onPostChange}: IPostLengthFilter) {
+export default function PostLengthFilter({labelPreview, minValue, onChange}: IPostLengthFilter) {
   const [value, setValue] = useState(minValue);
   const [valueError, setValueError] = useState('');
   const id = useId();
@@ -19,22 +16,27 @@ export default function PostLengthFilter({labelPreview, minValue, originalPosts,
     <>
       <div className={'post-filter'}>
         <label htmlFor={id}>{labelPreview}</label>
+
         <input
-          type='number'
+          type="number"
           id={id}
-          placeholder='post Length'
           value={value}
-          onChange={(event) => {
-            if (!Number(event.target.value)){
-              setValueError('Введите корректное число')
-            } else {
-              setValueError('')
-              const newValue = parseInt(event.target.value);
-              setValue(newValue);
-              onPostChange(filterByLength(originalPosts, newValue));
+          onChange={(e) => {
+            const raw = e.target.value;
+
+            if (!Number(raw)) {
+              setValueError('Введите корректное число');
+              return;
             }
+
+            setValueError('');
+            const newValue = Number(raw);
+
+            setValue(newValue);
+            onChange(newValue);
           }}
         />
+
         {valueError && <span>{valueError}</span>}
       </div>
     </>

@@ -1,6 +1,6 @@
 import {useParams} from "react-router-dom";
 import {useGetAlbumsByUserIdQuery} from "../../entities/user/api/userApi.ts";
-import {AlbumItem} from "../../entities/album/ui/AlbumItem.tsx";
+import {AlbumCard} from "../../entities/album/ui/AlbumCard.tsx";
 import type {IAlbumUser} from "../../entities/album/Album.ts";
 import './AlbumPage.css';
 
@@ -21,7 +21,7 @@ export default function AlbumPage() {
         {error && <p>Is error here!!!</p>}
         {data &&
           data.map((item: IAlbumUser) => (
-                <AlbumItem  {...item} key={crypto.randomUUID()} />
+                <AlbumCard  {...item} key={crypto.randomUUID()} />
             ))
         }
       </div>

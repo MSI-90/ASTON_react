@@ -1,5 +1,7 @@
 import {NavLink} from "react-router-dom";
 import './UserTabs.css';
+import {useState} from "react";
+import Button from "../../shared/ui/Buttons/Button.tsx";
 
 interface IPostParams {
   id: number;
@@ -17,6 +19,8 @@ interface ITodos {
 }
 
 export default function UserTabs() {
+  const [open, setOpen] = useState(false);
+
   const postParams: IPostParams = {
     id: 1,
     section: 'posts'
@@ -38,23 +42,35 @@ export default function UserTabs() {
 
   return(
     <>
-      <nav>
-        <span>
-          <NavLink to="/posts">Все посты</NavLink>
-        </span>
-        <span>
-          <NavLink to={`users/${postParams.id}/${postParams.section}`}>Все посты пользователя под ID: 1</NavLink>
-        </span>
-        <span>
-          <NavLink to={`users/${albumParams.id}/${albumParams.section}`}>Все альбомы пользователя под ID: 1</NavLink>
-        </span>
-        <span>
-          <NavLink to={`users/${todosParams.id}/${todosParams.section}`}>Все таски пользователя под ID: 1</NavLink>
-        </span>
-        <span>
-          <NavLink to={`customHook/${customPost.id}`}>Кастомный хук для постов пользователя под ID: 1</NavLink>
-        </span>
-      </nav>
+        <nav className="dropdown">
+          <Button
+            baseButton={true}
+            className={'dropdown__button'}
+            onClick={() => setOpen(prev => !prev)}
+          >
+            Меню
+          </Button>
+
+          {open && (
+            <div className="dropdown__menu">
+              <NavLink to="/posts">
+                Все посты
+              </NavLink>
+              <NavLink to={`users/${postParams.id}/${postParams.section}`}>
+                Посты пользователя ID: 1
+              </NavLink>
+              <NavLink to={`users/${albumParams.id}/${albumParams.section}`}>
+                Альбомы пользователя ID: 1
+              </NavLink>
+              <NavLink to={`users/${todosParams.id}/${todosParams.section}`}>
+                Таски пользователя ID: 1
+              </NavLink>
+              <NavLink to={`customHook/${customPost.id}`}>
+                Кастомный хук (ID: 1)
+              </NavLink>
+            </div>
+          )}
+        </nav>
     </>
   )
 }

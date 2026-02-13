@@ -1,7 +1,7 @@
 import {useParams} from "react-router-dom";
 import {useGetPhotosByAlbumIdQuery} from "../../entities/album/api/albumsApi.ts";
 import type {IPhoto} from "../../entities/photos/Photos.ts";
-import PhotoItem from "../../entities/photos/ui/PhotoItem.tsx";
+import PhotoCard from "../../entities/photos/ui/PhotoCard.tsx";
 import './PhotoPage.css';
 
 export function PhotoPage() {
@@ -18,7 +18,7 @@ export function PhotoPage() {
         {isLoading && <h1>Loading...</h1>}
         {error && <p>Is error here!!!</p>}
         {data && data.map((item: IPhoto) => (
-          <PhotoItem key={crypto.randomUUID()} {...item} />
+          <PhotoCard key={crypto.randomUUID()} {...item} />
         ))}
       </div>
     </>

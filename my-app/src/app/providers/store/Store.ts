@@ -1,5 +1,6 @@
-import { combineReducers } from "redux";
+import {combineReducers} from "redux";
 import {configureStore} from "@reduxjs/toolkit";
+import postReducer from '../../../entities/post/model/slice/postSlice.ts';
 
 // RTK Query
 import {userApi} from '../../../entities/user/api/userApi.ts';
@@ -9,6 +10,7 @@ import {postsApi} from "../../../entities/post/api/postsApi.ts";
 // корневой редьюсер стора
 // можно использовать просто объект
 const rootReducer = combineReducers({
+    post: postReducer,
     [userApi.reducerPath]: userApi.reducer,
     [albumApi.reducerPath]: albumApi.reducer,
     [postsApi.reducerPath]: postsApi.reducer,

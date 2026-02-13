@@ -1,4 +1,4 @@
-.photo-item {
+.album-item {
     border-radius: 12px;
     background: lightyellow;
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
@@ -7,17 +7,17 @@
     font-family: system-ui, sans-serif;
     gap: 12px;
     padding: 16px;
-    width: 70vw;
+    width: 50vw;
     margin-bottom: 10px;
 }
 
-.photo-item article {
+.album-item article {
     align-items: center;
     display: flex;
     gap: 8px;
 }
 
-.photo-item article span {
+.album-item article span {
     font-weight: 600;
     white-space: nowrap;
 }

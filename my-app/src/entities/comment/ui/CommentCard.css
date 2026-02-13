@@ -3,7 +3,7 @@
     border-radius: 8px;
     padding: 16px;
     background: #fff;
-    max-width: 600px;
+    width: 50vw;
     margin: 12px auto;
     transition: box-shadow 0.2s ease;
 }
