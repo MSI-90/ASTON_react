@@ -11,7 +11,7 @@ export default function PostListPage() {
   const [searchParams] = useSearchParams();
 
   type limitType = number | undefined
-  const limit:limitType = Number(searchParams.get('_limit')) || undefined;
+  const limit:limitType = Number(searchParams.get('_limit')) || 10;
 
   useGetAllPostsQuery({limit});
 

@@ -6,8 +6,7 @@ import type {RootState} from "../../../../app/providers/store/Store.ts";
 const postAdapter = createEntityAdapter<IPost>();
 
 export const postSelectors = postAdapter.getSelectors(
-  (state: RootState) => state.post
-);
+  (state: RootState) => state.post);
 
 // первичное состояние, инициализация
 const initialState = postAdapter.getInitialState({
@@ -15,7 +14,7 @@ const initialState = postAdapter.getInitialState({
   error: false,
 });
 
-export const PostSlice = createSlice({
+export const postSlice = createSlice({
   name: 'post',
   initialState: initialState,
   reducers: {},
@@ -70,4 +69,4 @@ export const PostSlice = createSlice({
   }
 })
 
-export default PostSlice.reducer;
+export default postSlice.reducer;
