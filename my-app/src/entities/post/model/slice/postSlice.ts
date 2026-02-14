@@ -2,6 +2,7 @@ import type {IPost} from "../../Post.ts";
 import {createEntityAdapter, createSlice} from "@reduxjs/toolkit";
 import {postsApi} from "../../api/postsApi.ts";
 import type {RootState} from "../../../../app/providers/store/Store.ts";
+import {userApi} from "../../../user/api/userApi.ts";
 
 const postAdapter = createEntityAdapter<IPost>();
 
@@ -66,6 +67,13 @@ export const postSlice = createSlice({
           state.error = true;
         }
       );
+
+    builder.addMatcher(userApi.endpoints.getPostsByUserId.matchFulfilled,
+      (state, action) => {
+        state.loading = false;
+        state.error = false;
+      postAdapter.setAll(state, action.payload);
+    })
   }
 })
 

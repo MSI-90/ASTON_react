@@ -4,7 +4,7 @@ import TodosPage from '../Todos/TodosPage.tsx';
 import Error404 from "../Error404/Error404.tsx";
 import UserPostPage from "../Post/UserPosts/UserPostPage.tsx";
 
-export default function UserPage() {
+export default function UserVariantSectionPage() {
   const {section} = useParams();
 
   switch (section) {

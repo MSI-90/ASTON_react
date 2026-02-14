@@ -1,0 +1,32 @@
+:root {
+    --accent: #4a7aff;
+}
+
+article {
+    background: #fafafa;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px;
+}
+
+label {
+    color: #333;
+    font-size: 14px;
+}
+
+input {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px 14px;
+    text-align: center;
+}
+
+.button-user {
+    background: var(--accent);
+    border-radius: 8px;
+    color: white;
+    font-weight: 500;
+    padding: 12px 16px;
+}

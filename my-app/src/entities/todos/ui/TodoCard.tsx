@@ -1,7 +1,7 @@
-import type {ITodosUser} from "../Todos.ts";
+import type {ITodos} from "../Todos.ts";
 import './TodoCard.css';
 
-export default function TodoCard(props: ITodosUser) {
+export default function TodoCard(props: ITodos) {
   const {userId, id, title, completed} = props;
   return (
     <>

@@ -1,37 +1,53 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
-import type {IAlbumUser} from "../../album/Album.ts";
-import type {ITodosUser} from "../../todos/Todos.ts";
+import type {IAlbum} from "../../album/Album.ts";
+import type {ITodos} from "../../todos/Todos.ts";
 import type {IPost} from "../../post/Post.ts";
+import type {IUser} from "../User.ts";
 
 interface Params {
     userId: number
-    section: string;
+    section?: string;
     limit?: number;
 }
 
 export const userApi = createApi({
     reducerPath: 'userApi',
     baseQuery: fetchBaseQuery({ baseUrl: 'https://jsonplaceholder.typicode.com/'}),
+    tagTypes: ['user', 'albumByUser', 'todosByUser', 'postsByUser'],
     endpoints: (builder) => ({
-        getAlbumsByUserId: builder.query<IAlbumUser[], Params>({
-            query: ({userId, section, limit}: Params) => ({
-                url: `users/${userId}/${section}`,
-                params: {_limit: limit}
-            })
+        getUserById: builder.query<IUser, Params>({
+            query: ({userId}: Params) => ({
+                url: `users/${userId}`
+            }),
+            providesTags: ['user'],
         }),
-        getTodosByUserId: builder.query<ITodosUser[], Params>({
+        getAlbumsByUserId: builder.query<IAlbum[], Params>({
             query: ({userId, section, limit}: Params) => ({
                 url: `users/${userId}/${section}`,
                 params: {_limit: limit}
-            })
+            }),
+            providesTags: ['albumByUser'],
+        }),
+        getTodosByUserId: builder.query<ITodos[], Params>({
+            query: ({userId, section, limit}: Params) => ({
+                url: `users/${userId}/${section}`,
+                params: {_limit: limit}
+            }),
+            providesTags: ['todosByUser'],
         }),
         getPostsByUserId: builder.query<IPost[], Params>({
             query: ({userId, section, limit}: Params) => ({
                 url: `users/${userId}/${section}`,
                 params: {_limit: limit}
-            })
+            }),
+            providesTags: ['postsByUser'],
         })
     }),
 });
 
-export const { useGetAlbumsByUserIdQuery, useGetTodosByUserIdQuery, useGetPostsByUserIdQuery } = userApi
+export const {
+    useGetUserByIdQuery,
+    useGetAlbumsByUserIdQuery,
+    useGetTodosByUserIdQuery,
+    useGetPostsByUserIdQuery
+} = userApi

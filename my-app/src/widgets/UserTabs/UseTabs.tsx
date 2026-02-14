@@ -2,43 +2,39 @@ import {NavLink} from "react-router-dom";
 import './UserTabs.css';
 import {useState} from "react";
 import Button from "../../shared/ui/Buttons/Button.tsx";
+import {useAppSelector} from "../../app/providers/store/hooks/ReduxHooks.ts";
 
 interface IPostParams {
-  id: number;
   section?: string;
 }
 
 interface IAlbumParams {
-  id: number;
   section: string;
 }
 
 interface ITodos {
-  id: number;
   section: string;
 }
 
 export default function UserTabs() {
   const [open, setOpen] = useState(false);
 
+  // почему хардкод данные - в рамках выполнения задания, для теста
   const postParams: IPostParams = {
-    id: 1,
     section: 'posts'
   }
 
   const albumParams: IAlbumParams = {
-    id: 1,
     section: 'albums'
   }
 
   const todosParams: ITodos = {
-    id: 1,
     section: 'todos'
   }
 
-  const customPost: IPostParams = {
-    id: 1
-  }
+
+  const userData = useAppSelector(state => state.user.currentUser);
+  console.log(userData);
 
   return(
     <>
@@ -53,20 +49,23 @@ export default function UserTabs() {
 
           {open && (
             <div className="dropdown__menu">
-              <NavLink to="/posts">
+              <NavLink to={'/'}>
+                Главная
+              </NavLink>
+              <NavLink to={'/posts'}>
                 Все посты
               </NavLink>
-              <NavLink to={`users/${postParams.id}/${postParams.section}`}>
-                Посты пользователя ID: 1
+              <NavLink to={`users/${userData.id}/${postParams.section}`}>
+                Посты пользователя ID: {userData.id}
               </NavLink>
-              <NavLink to={`users/${albumParams.id}/${albumParams.section}`}>
-                Альбомы пользователя ID: 1
+              <NavLink to={`users/${userData.id}/${albumParams.section}`}>
+                Альбомы пользователя ID: {userData.id}
               </NavLink>
-              <NavLink to={`users/${todosParams.id}/${todosParams.section}`}>
-                Таски пользователя ID: 1
+              <NavLink to={`users/${userData.id}/${todosParams.section}`}>
+                Таски пользователя ID: {userData.id}
               </NavLink>
-              <NavLink to={`customHook/${customPost.id}`}>
-                Кастомный хук (ID: 1)
+              <NavLink to={`customHook/${userData.id}`}>
+                Кастомный хук (ID: {userData.id})
               </NavLink>
             </div>
           )}
