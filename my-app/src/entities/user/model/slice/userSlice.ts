@@ -1,4 +1,4 @@
-import {createEntityAdapter, createSlice} from "@reduxjs/toolkit";
+import {createEntityAdapter, createSlice, type PayloadAction} from "@reduxjs/toolkit";
 import type {IUser} from "../../User.ts";
 import type {RootState} from '../../../../app/providers/store/Store.ts';
 import {userApi} from "../../api/userApi.ts";
@@ -10,6 +10,7 @@ export const userSelector = userAdapter.getSelectors(
 
 const initialState = userAdapter.getInitialState({
   currentUser: {} as IUser,
+  currentUserId: 0,
   loading: false,
   error: false,
 })
@@ -17,17 +18,29 @@ const initialState = userAdapter.getInitialState({
 export const userSlice = createSlice({
   name: 'user',
   initialState: initialState,
-  reducers: {},
+  reducers: {
+    setSuccess: (state, action: PayloadAction<boolean>) => {
+      state.loading = action.payload;
+      state.error = state.loading;
+    },
+    setCurrentUser: (state, action: PayloadAction<IUser>) => {
+      state.currentUser = action.payload;
+    },
+    setCurrentUserId: (state, action: PayloadAction<number>) => {
+      state.currentUserId = action.payload;
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addMatcher(userApi.endpoints.getUserById.matchFulfilled,
         (state, action) => {
-        state.loading = false;
-        state.error = false;
-        state.currentUser = action.payload;
+        userSlice.caseReducers.setSuccess(state, {payload: false, type:''});
+        userSlice.caseReducers.setCurrentUser(state, {payload: action.payload, type:''});
         userAdapter.upsertOne(state, action.payload);
       })
   }
 })
+
+export const {setCurrentUserId} = userSlice.actions;
 
 export default userSlice.reducer;

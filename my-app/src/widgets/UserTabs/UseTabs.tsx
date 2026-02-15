@@ -19,7 +19,6 @@ interface ITodos {
 export default function UserTabs() {
   const [open, setOpen] = useState(false);
 
-  // почему хардкод данные - в рамках выполнения задания, для теста
   const postParams: IPostParams = {
     section: 'posts'
   }
@@ -32,9 +31,7 @@ export default function UserTabs() {
     section: 'todos'
   }
 
-
-  const userData = useAppSelector(state => state.user.currentUser);
-  console.log(userData);
+  const userData = useAppSelector(state => state.user.currentUserId);
 
   return(
     <>
@@ -55,17 +52,17 @@ export default function UserTabs() {
               <NavLink to={'/posts'}>
                 Все посты
               </NavLink>
-              <NavLink to={`users/${userData.id}/${postParams.section}`}>
-                Посты пользователя ID: {userData.id}
+              <NavLink to={`users/${userData}/${postParams.section}`}>
+                Посты пользователя ID: {userData}
               </NavLink>
-              <NavLink to={`users/${userData.id}/${albumParams.section}`}>
-                Альбомы пользователя ID: {userData.id}
+              <NavLink to={`users/${userData}/${albumParams.section}`}>
+                Альбомы пользователя ID: {userData}
               </NavLink>
-              <NavLink to={`users/${userData.id}/${todosParams.section}`}>
-                Таски пользователя ID: {userData.id}
+              <NavLink to={`users/${userData}/${todosParams.section}`}>
+                Таски пользователя ID: {userData}
               </NavLink>
-              <NavLink to={`customHook/${userData.id}`}>
-                Кастомный хук (ID: {userData.id})
+              <NavLink to={`customHook/${userData}`}>
+                Кастомный хук (ID: {userData})
               </NavLink>
             </div>
           )}

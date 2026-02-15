@@ -1,4 +1,4 @@
-import {createEntityAdapter, createSlice} from "@reduxjs/toolkit";
+import {createEntityAdapter, createSlice, type PayloadAction} from "@reduxjs/toolkit";
 import type {IComment} from "../../Comment.ts";
 import type {RootState} from "../../../../app/providers/store/Store.ts";
 import {commentApi} from "../../api/commentApi.ts";
@@ -17,26 +17,35 @@ const initialState = commentAdapter.getInitialState({
 export const commentSlice = createSlice({
   name: 'comment',
   initialState: initialState,
-  reducers: {},
+  reducers: {
+    setLoading: (state, action: PayloadAction<boolean>) => {
+      state.loading = action.payload;
+      state.error = !state.loading;
+    },
+    setSuccess: (state, action: PayloadAction<boolean>) => {
+      state.loading = state.error = action.payload;
+    },
+    setError: (state, action: PayloadAction<boolean>) => {
+      state.loading = action.payload;
+      state.error = !state.loading;
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addMatcher(commentApi.endpoints.getAllComments.matchPending,
         (state) => {
-        state.loading = true;
-        state.error = false;
+        commentSlice.caseReducers.setLoading(state, {payload: true, type: ''});
       });
     builder
       .addMatcher(commentApi.endpoints.getAllComments.matchFulfilled,
         (state, action) => {
-        state.loading = false;
-        state.error = false;
+        commentSlice.caseReducers.setSuccess(state, {payload: false, type: ''});
         commentAdapter.setAll(state, action.payload);
       })
     builder
       .addMatcher(commentApi.endpoints.getAllComments.matchRejected,
         (state) => {
-        state.loading = false;
-        state.error = true;
+        commentSlice.caseReducers.setError(state, {payload: false, type: ''});
       })
   }
 })

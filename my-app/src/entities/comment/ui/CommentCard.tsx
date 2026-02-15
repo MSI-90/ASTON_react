@@ -1,6 +1,6 @@
 import './CommentCard.css';
 import {useState} from "react";
-import type {IComment} from "../../../widgets/CommentList/tetsData/Comments.ts";
+import type {IComment} from "../Comment.ts";
 
 export default function CommentCard(props: IComment) {
   const [open, setOpen] = useState(false);

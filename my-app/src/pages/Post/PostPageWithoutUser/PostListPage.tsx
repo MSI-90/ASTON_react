@@ -15,9 +15,8 @@ export default function PostListPage() {
 
   useGetAllPostsQuery({limit});
 
-  const posts = useAppSelector(postSelectors.selectAll);
-  const loading = useAppSelector(state => state.post.loading);
-  const error = useAppSelector(state => state.post.error);
+  const posts: IPost[] = useAppSelector(postSelectors.selectAll);
+  const loading: boolean = useAppSelector(state => state.post.loading);
 
   const [minLength, setMinLength] = useState(0);
 
@@ -26,7 +25,7 @@ export default function PostListPage() {
   }, [posts, minLength]);
 
   if (loading) return <h1>Loading...</h1>;
-  if (error) return <p>Ошибка</p>;
+  if (posts.length === 0 ) return <p>Ошибка</p>;
 
   return (
     <>

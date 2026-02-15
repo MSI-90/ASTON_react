@@ -1,9 +1,7 @@
 import {useGetUserByIdQuery} from "../../entities/user/api/userApi.ts";
-import {useState} from "react";
+import {useAppSelector} from "../../app/providers/store/hooks/ReduxHooks.ts";
 
-export function useUserById(initialId?: number) {
-  const [userId, setUsId] = useState(initialId ?? 0);
-  const query = useGetUserByIdQuery({ userId });
-
-  return { query, setUsId };
+export function useUserById() {
+  const userId = useAppSelector(state => state.user.currentUserId);
+  useGetUserByIdQuery({ userId }, {skip: userId === 0});
 }

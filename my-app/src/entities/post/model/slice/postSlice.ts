@@ -1,5 +1,5 @@
 import type {IPost} from "../../Post.ts";
-import {createEntityAdapter, createSlice} from "@reduxjs/toolkit";
+import {createEntityAdapter, createSlice, type PayloadAction} from "@reduxjs/toolkit";
 import {postsApi} from "../../api/postsApi.ts";
 import type {RootState} from "../../../../app/providers/store/Store.ts";
 import {userApi} from "../../../user/api/userApi.ts";
@@ -18,60 +18,67 @@ const initialState = postAdapter.getInitialState({
 export const postSlice = createSlice({
   name: 'post',
   initialState: initialState,
-  reducers: {},
+  reducers: {
+    setLoading: (state, action: PayloadAction<boolean>) => {
+      state.loading = action.payload;
+      state.error = !state.loading;
+    },
+    setSuccess: (state, action: PayloadAction<boolean>) => {
+      state.loading = action.payload;
+      state.error = state.loading;
+    },
+    setError: (state, action: PayloadAction<boolean>) => {
+      state.loading = action.payload;
+      state.error = !state.loading;
+    }
+  },
   extraReducers: builder => {
     builder
       .addMatcher(
         postsApi.endpoints.getAllPosts.matchPending,
         (state) => {
-          state.loading = true;
-          state.error = false;
+          postSlice.caseReducers.setLoading(state, {payload: true, type: '' } );
         }
       );
     builder
       .addMatcher(
         postsApi.endpoints.getAllPosts.matchFulfilled,
         (state, action) => {
-          state.loading = false;
-          state.error = false;
+          postSlice.caseReducers.setSuccess(state, {payload: false, type: ''});
           postAdapter.setAll(state, action.payload);
         }
       );
     builder
       .addMatcher(postsApi.endpoints.getAllPosts.matchRejected,
         (state) => {
-          state.loading = false;
-          state.error = true;
+        postSlice.caseReducers.setError(state, {payload: false, type: ''} );
         }
       );
 
     builder
       .addMatcher(postsApi.endpoints.getPostById.matchPending,
         (state) => {
-          state.loading = true;
-          state.error = false;
+          postSlice.caseReducers.setLoading(state, {payload: true, type: '' } );
         }
       );
     builder
       .addMatcher(postsApi.endpoints.getPostById.matchFulfilled,
         (state, action) => {
-          state.loading = false;
-          state.error = false;
+          postSlice.caseReducers.setSuccess(state, {payload: false, type: ''});
           postAdapter.upsertOne(state, action.payload);
         }
       );
     builder
       .addMatcher(postsApi.endpoints.getPostById.matchRejected,
         (state) => {
-          state.loading = false;
-          state.error = true;
+          postSlice.caseReducers.setError(state, {payload: false, type: ''} );
         }
       );
 
+
     builder.addMatcher(userApi.endpoints.getPostsByUserId.matchFulfilled,
       (state, action) => {
-        state.loading = false;
-        state.error = false;
+        postSlice.caseReducers.setSuccess(state, {payload: false, type: ''});
       postAdapter.setAll(state, action.payload);
     })
   }

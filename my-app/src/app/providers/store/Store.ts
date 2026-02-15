@@ -5,6 +5,7 @@ import commentReducer from '../../../entities/comment/model/slice/commentSlice.t
 import albumReducer from '../../../entities/album/model/slice/albumSlice.ts';
 import todoReducer from '../../../entities/todos/model/slice/todoSlice.ts';
 import userReducer from '../../../entities/user/model/slice/userSlice.ts';
+import photoReducer from '../../../entities/photos/model/photoSlice.ts';
 
 // RTK Query
 import {userApi} from '../../../entities/user/api/userApi.ts';
@@ -20,6 +21,7 @@ const rootReducer = combineReducers({
     comment: commentReducer,
     album: albumReducer,
     todo: todoReducer,
+    photo: photoReducer,
     [userApi.reducerPath]: userApi.reducer,
     [albumApi.reducerPath]: albumApi.reducer,
     [postsApi.reducerPath]: postsApi.reducer,

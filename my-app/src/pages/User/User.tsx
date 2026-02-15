@@ -1,9 +1,12 @@
-import {type ChangeEvent, useEffect, useId, useState} from "react";
+import {type ChangeEvent, useId, useState} from "react";
 import './User.css';
 import {useUserById} from "../../features/UserHook/UserById.ts";
+import {useAppDispatch} from "../../app/providers/store/hooks/ReduxHooks.ts";
+import {setCurrentUserId} from "../../entities/user/model/slice/userSlice.ts";
 
 export default function UserPage() {
-  const [userId, setUserId] = useState<number>(0);
+  const [value, setValue] = useState('');
+  const dispatch = useAppDispatch();
   const inputId = useId();
 
   interface MinMax {
@@ -16,33 +19,23 @@ export default function UserPage() {
     max: 2,
   }
 
-  const { query, setUsId } = useUserById();
+  // кастомный хук для RTK Query эндпоинта
+  useUserById();
 
-  const getUserInfo = (event: ChangeEvent<HTMLInputElement>) => {
-    const userIdValue = Number(event.target.value);
-    setUserId(userIdValue);
-
-    if (userIdValue === 0) return;
-    setUsId(userIdValue);
+  function getUserInfo(event: ChangeEvent<HTMLInputElement>) {
+    const id = Number(event.target.value);
+    setValue(event.target.value);
+    dispatch(setCurrentUserId(id));
   }
-
-  useEffect(() => {
-    console.log(userId);
-  },[userId])
-
-  useEffect(() => {
-    console.log(query.data);
-
-  }, [query.data]);
 
   return(
     <>
       <article>
         <label htmlFor={inputId}>Укажите идентификатор пользователя</label>
         <input
-          type={'text'}
+          type={'number'}
           name={inputId}
-          value={userId}
+          value={value}
           minLength={minMaxInput.min}
           maxLength={minMaxInput.max}
           onChange={(e) => getUserInfo(e)}

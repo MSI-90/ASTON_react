@@ -1,4 +1,4 @@
-import {createEntityAdapter, createSlice} from "@reduxjs/toolkit";
+import {createEntityAdapter, createSlice, type PayloadAction} from "@reduxjs/toolkit";
 import type {RootState} from '../../../../app/providers/store/Store.ts';
 import {userApi} from "../../../user/api/userApi.ts";
 import type {IAlbum} from "../../Album.ts";
@@ -16,26 +16,35 @@ const initialState = albumAdapter.getInitialState({
 export const albumSlice = createSlice({
   name: 'userAlbum',
   initialState: initialState,
-  reducers: {},
+  reducers: {
+    setLoading: (state, action: PayloadAction<boolean>) => {
+      state.loading = action.payload;
+      state.error = !state.loading;
+    },
+    setSuccess: (state, action: PayloadAction<boolean>) => {
+      state.loading = state.error = action.payload;
+    },
+    setError: (state, action: PayloadAction<boolean>) => {
+      state.loading = action.payload;
+      state.error = !state.loading;
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addMatcher(userApi.endpoints.getAlbumsByUserId.matchPending, (state) => {
-        state.loading = true;
-        state.error = false;
+        albumSlice.caseReducers.setLoading(state, {payload: true, type: ''})
       });
     builder
       .addMatcher(userApi.endpoints.getAlbumsByUserId.matchFulfilled,
         (state, action) => {
-          state.loading = false;
-          state.error = false;
+        albumSlice.caseReducers.setSuccess(state, {payload: false, type: ''})
           albumAdapter.setAll(state, action.payload);
-        })
+      });
     builder
       .addMatcher(userApi.endpoints.getAlbumsByUserId.matchRejected,
         (state) => {
-          state.loading = false;
-          state.error = true;
-        })
+        albumSlice.caseReducers.setError(state, {payload: false, type: ''})
+      });
   }
 })
 
