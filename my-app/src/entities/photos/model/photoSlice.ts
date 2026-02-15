@@ -1,5 +1,5 @@
 import {createEntityAdapter, createSlice, type PayloadAction} from "@reduxjs/toolkit";
-import type {IPhoto} from "../Photos.ts";
+import type {IPhoto} from "./types/Photos.ts";
 import type {RootState} from '../../../app/providers/store/Store.ts';
 import {albumApi} from "../../album/api/albumsApi.ts";
 

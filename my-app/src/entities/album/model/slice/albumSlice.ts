@@ -1,7 +1,7 @@
 import {createEntityAdapter, createSlice, type PayloadAction} from "@reduxjs/toolkit";
 import type {RootState} from '../../../../app/providers/store/Store.ts';
 import {userApi} from "../../../user/api/userApi.ts";
-import type {IAlbum} from "../../Album.ts";
+import type {IAlbum} from "../types/Album.ts";
 
 const albumAdapter = createEntityAdapter<IAlbum>();
 

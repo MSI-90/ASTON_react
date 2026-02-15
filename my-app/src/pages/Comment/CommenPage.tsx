@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import CommentCard from "../../entities/comment/ui/CommentCard.tsx";
-import type {IComment} from "../../entities/comment/Comment.ts";
+import type {IComment} from "../../entities/comment/model/types/Comment.ts";
 import {useGetAllCommentsQuery} from "../../entities/comment/api/commentApi.ts";
 import {useAppSelector} from "../../app/providers/store/hooks/ReduxHooks.ts";
 import {commentSelectors} from "../../entities/comment/model/slice/commentSlice.ts";

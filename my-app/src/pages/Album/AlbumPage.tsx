@@ -1,7 +1,7 @@
 import {useParams} from "react-router-dom";
 import {useGetAlbumsByUserIdQuery} from "../../entities/user/api/userApi.ts";
 import {AlbumCard} from "../../entities/album/ui/AlbumCard.tsx";
-import type {IAlbum} from "../../entities/album/Album.ts";
+import type {IAlbum} from "../../entities/album/model/types/Album.ts";
 import './AlbumPage.css';
 import {useAppSelector} from "../../app/providers/store/hooks/ReduxHooks.ts";
 import {albumSelector} from "../../entities/album/model/slice/albumSlice.ts";

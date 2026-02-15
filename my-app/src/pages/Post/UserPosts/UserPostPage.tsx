@@ -1,6 +1,6 @@
 import {useParams} from "react-router-dom";
 import {useGetPostsByUserIdQuery} from "../../../entities/user/api/userApi.ts";
-import type {IPost} from "../../../entities/post/Post.ts";
+import type {IPost} from "../../../entities/post/model/types/Post.ts";
 import PostCard from "../../../entities/post/ui/PostCard.tsx";
 import {useAppSelector} from "../../../app/providers/store/hooks/ReduxHooks.ts";
 import {postSelectors} from "../../../entities/post/model/slice/postSlice.ts";

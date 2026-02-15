@@ -1,6 +1,6 @@
 import './CommentCard.css';
 import {useState} from "react";
-import type {IComment} from "../Comment.ts";
+import type {IComment} from "../model/types/Comment.ts";
 
 export default function CommentCard(props: IComment) {
   const [open, setOpen] = useState(false);

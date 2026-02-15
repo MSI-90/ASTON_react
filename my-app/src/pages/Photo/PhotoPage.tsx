@@ -1,6 +1,6 @@
 import {useParams} from "react-router-dom";
 import {useGetPhotosByAlbumIdQuery} from "../../entities/album/api/albumsApi.ts";
-import type {IPhoto} from "../../entities/photos/Photos.ts";
+import type {IPhoto} from "../../entities/photos/model/types/Photos.ts";
 import PhotoCard from "../../entities/photos/ui/PhotoCard.tsx";
 import './PhotoPage.css';
 import {useAppDispatch, useAppSelector} from "../../app/providers/store/hooks/ReduxHooks.ts";

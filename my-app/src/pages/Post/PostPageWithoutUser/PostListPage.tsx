@@ -1,6 +1,6 @@
 import {useGetAllPostsQuery} from "../../../entities/post/api/postsApi.ts";
 import {useMemo, useState} from "react";
-import type {IPost} from "../../../entities/post/Post.ts";
+import type {IPost} from "../../../entities/post/model/types/Post.ts";
 import PostLengthFilter from "../../../features/PostLengthFilter/ui/PostLengthFilter.tsx";
 import PostCard from "../../../entities/post/ui/PostCard.tsx";
 import {useSearchParams} from "react-router-dom";

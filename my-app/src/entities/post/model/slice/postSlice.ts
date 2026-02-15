@@ -1,4 +1,4 @@
-import type {IPost} from "../../Post.ts";
+import type {IPost} from "../types/Post.ts";
 import {createEntityAdapter, createSlice, type PayloadAction} from "@reduxjs/toolkit";
 import {postsApi} from "../../api/postsApi.ts";
 import type {RootState} from "../../../../app/providers/store/Store.ts";

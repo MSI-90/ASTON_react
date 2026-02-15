@@ -1,5 +1,5 @@
 import {createEntityAdapter, createSlice, type PayloadAction} from "@reduxjs/toolkit";
-import type {IComment} from "../../Comment.ts";
+import type {IComment} from "../types/Comment.ts";
 import type {RootState} from "../../../../app/providers/store/Store.ts";
 import {commentApi} from "../../api/commentApi.ts";
 

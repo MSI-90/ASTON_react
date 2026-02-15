@@ -1,5 +1,5 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
-import type {IComment} from "../Comment.ts";
+import type {IComment} from "../model/types/Comment.ts";
 
 interface Params {
   limit?: number;

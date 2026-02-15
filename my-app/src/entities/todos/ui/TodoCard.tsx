@@ -1,4 +1,4 @@
-import type {ITodos} from "../Todos.ts";
+import type {ITodos} from "../model/types/Todos.ts";
 import './TodoCard.css';
 
 export default function TodoCard(props: ITodos) {

@@ -1,7 +1,7 @@
 import {useParams} from "react-router-dom";
 import {useGetTodosByUserIdQuery} from "../../entities/user/api/userApi.ts";
 import TodoCard from "../../entities/todos/ui/TodoCard.tsx";
-import type {ITodos} from "../../entities/todos/Todos.ts";
+import type {ITodos} from "../../entities/todos/model/types/Todos.ts";
 import {useAppSelector} from "../../app/providers/store/hooks/ReduxHooks.ts";
 import {todoSelector} from "../../entities/todos/model/slice/todoSlice.ts";
 

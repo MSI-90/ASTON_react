@@ -1,5 +1,5 @@
 import {createEntityAdapter, createSlice} from "@reduxjs/toolkit";
-import type {ITodos} from "../../Todos.ts";
+import type {ITodos} from "../types/Todos.ts";
 import type {RootState} from "../../../../app/providers/store/Store.ts";
 import {userApi} from "../../../user/api/userApi.ts";
 

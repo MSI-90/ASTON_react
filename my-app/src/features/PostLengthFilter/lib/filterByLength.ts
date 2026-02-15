@@ -1,4 +1,4 @@
-import type {IPost} from "../../../entities/post/Post.ts";
+import type {IPost} from "../../../entities/post/model/types/Post.ts";
 
 type filterReturn = IPost[] | [];
 

@@ -1,4 +1,4 @@
-import type {IPhoto} from "../Photos.ts";
+import type {IPhoto} from "../model/types/Photos.ts";
 import './PhotoCard.css';
 
 export default function PhotoCard (props: IPhoto) {

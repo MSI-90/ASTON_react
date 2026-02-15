@@ -1,5 +1,5 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
-import type {IPost} from "../Post.ts";
+import type {IPost} from "../model/types/Post.ts";
 
 interface Params {
   id?: number;
