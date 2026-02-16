@@ -5,6 +5,7 @@ import PhotoCard from "../../entities/photos/ui/PhotoCard.tsx";
 import './PhotoPage.css';
 import {useAppDispatch, useAppSelector} from "../../app/providers/store/hooks/ReduxHooks.ts";
 import {photoSelector, setCurrentAlbumId} from "../../entities/photos/model/photoSlice.ts";
+import ItemList from "../../shared/ui/ItemList/ItemList.tsx";
 
 export function PhotoPage() {
   const {id} = useParams();
@@ -18,19 +19,16 @@ export function PhotoPage() {
   const photos:IPhoto[] = useAppSelector(photoSelector.selectAll);
   const loading: boolean = useAppSelector(state => state.photo.loading);
   const error: boolean = useAppSelector(state => state.photo.error);
-  const currentAlbumId = useAppSelector(state => state.photo.currentAlbumId);
+  const currentAlbumId: number = useAppSelector(state => state.photo.currentAlbumId);
 
   return (
     <>
-      <div className={'photo-list'}>
-        <h3>Текущий альбом: {currentAlbumId}</h3>
-        {loading && <h1>Загрузка...</h1>}
-        {error && <p>Ошибка!!!</p>}
-        {photos.length === 0 && <p>Нет данных для отображения...</p>}
-        {photos && photos.map((item: IPhoto) => (
-          <PhotoCard key={crypto.randomUUID()} {...item} />
-        ))}
-      </div>
+      <ItemList<IPhoto>
+        itemList={photos}
+        componentOnRender={PhotoCard}
+        loading={loading}
+        error={error} className={'photo-list'}
+        currentItemId={currentAlbumId} />
     </>
   )
 }

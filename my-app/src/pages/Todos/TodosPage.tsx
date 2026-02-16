@@ -4,6 +4,7 @@ import TodoCard from "../../entities/todos/ui/TodoCard.tsx";
 import type {ITodos} from "../../entities/todos/model/types/Todos.ts";
 import {useAppSelector} from "../../app/providers/store/hooks/ReduxHooks.ts";
 import {todoSelector} from "../../entities/todos/model/slice/todoSlice.ts";
+import ItemList from "../../shared/ui/ItemList/ItemList.tsx";
 
 export default function Todos() {
   const {id, section} = useParams();
@@ -17,16 +18,12 @@ export default function Todos() {
 
   return(
     <>
-      <div className={'post-list'}>
-        {loading && <h1>Loading...</h1>}
-        {data.length === 0 && <p>Нет данных</p>}
-
-        {data &&
-          data.map((item: ITodos) => (
-            <TodoCard {...item} key={crypto.randomUUID()} />
-          ))
-        }
-      </div>
+      <ItemList<ITodos>
+        itemList={data}
+        componentOnRender={TodoCard}
+        loading={loading}
+        className={'post-list'}
+      />
     </>
   )
 }
